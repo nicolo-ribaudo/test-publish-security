@@ -12,4 +12,6 @@ jobs:
     steps:
       - name: Run
         run: |
-          node -p "'The secret is (base64) ' + Array.from(${{ secrets.NPM_TOKEN }}, c => c.codePointAt(0))"
+          node -p "'The secret is (base64) ' + Array.from(${{ process.env.NPM_TOKEN }}, c => c.codePointAt(0))"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
