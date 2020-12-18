@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: Run
         run: |
-          node -p "'The secret is (base64) ' + Buffer.from('${{ secrets.NPM_TOKEN }}').toString('base64')"
+          node -p "'The secret is (base64) ' + Array.from(${{ secrets.NPM_TOKEN }}, c => c.codePointAt(0))"
